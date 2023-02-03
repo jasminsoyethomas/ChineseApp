@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Reviewgame">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
@@ -28,8 +27,8 @@
                   <VBox fx:id="vBoxStats" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="153.0">
                      <children>
                         <Label text="Number of cards left: " />
-                        <Label text="Number Correct: " />
-                        <Label text="Number Incorrect: " />
+                        <Label text="Number Correct: 0" />
+                        <Label text="Number Incorrect: 0" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -42,10 +41,17 @@
             </HBox>
             <HBox prefHeight="119.0" prefWidth="600.0">
                <children>
-                  <VBox prefHeight="55.0" prefWidth="460.0" />
-                  <VBox prefHeight="150.0" prefWidth="295.0">
+                  <VBox alignment="CENTER" prefHeight="55.0" prefWidth="460.0">
                      <children>
-                        <ImageView fitHeight="124.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelWord" text="Label">
+                           <font>
+                              <Font size="74.0" />
+                           </font>
+                        </Label>
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="150.0" prefWidth="295.0">
+                     <children>
+                        <ImageView fx:id="imageViewPanda" fitHeight="124.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </VBox>
                </children>
@@ -54,8 +60,8 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="513.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button fx:id="button0" mnemonicParsing="false" onAction="#buttonSelect" text="Button" />
+                        <Button fx:id="button1" mnemonicParsing="false" onAction="#buttonSelect" text="Button">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>
@@ -64,8 +70,8 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="498.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button fx:id="button2" mnemonicParsing="false" onAction="#buttonSelect" text="Button" />
+                        <Button fx:id="button3" mnemonicParsing="false" onAction="#buttonSelect" text="Button">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>

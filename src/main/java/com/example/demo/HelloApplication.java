@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         System.out.println(deck2.cardDeck.size());
     */
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 420, 340);
+        Scene scene = new Scene(fxmlLoader.load(), 620, 540);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

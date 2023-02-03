@@ -33,7 +33,7 @@ public class HelloController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("createowndeck.fxml"));
         Scene scene;
         try{
-            scene = new Scene(fxmlLoader.load(),320,240);
+            scene = new Scene(fxmlLoader.load(), 620, 540);
         }
         catch (IOException e){
             throw new RuntimeException(e);
@@ -45,10 +45,12 @@ public class HelloController implements Initializable {
     }
 
     public void loadScreen3(){
+        CardDeck cardDeck = new CardDeck();
+        cardDeck.loadCardDeck((Stage)(buttonUseExistingDeck.getScene().getWindow()));
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reviewgame.fxml"));
         Scene scene;
         try{
-            scene = new Scene(fxmlLoader.load(),320,240);
+            scene = new Scene(fxmlLoader.load(), 620, 540);
         }
         catch (IOException e){
             throw new RuntimeException(e);
@@ -57,6 +59,9 @@ public class HelloController implements Initializable {
         stage.close();
         stage.setScene(scene);
         stage.show();
+
+
+
     }
 
 

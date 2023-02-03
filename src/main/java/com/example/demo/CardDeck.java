@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -10,7 +13,7 @@ public class CardDeck implements Serializable {
     }
 
     public void saveDeck(String name) {
-        String filename = System.getProperty("user.home")+"/Desktop/" + name + ".zhang";
+        String filename = System.getProperty("user.home")+"/Desktop/" + name + ".txt";
         FileOutputStream file = null;
         try {
             file = new FileOutputStream(filename);
@@ -45,13 +48,15 @@ public class CardDeck implements Serializable {
         System.out.println("Object has been serialized");
     }
 
-    public void loadCardDeck() {
+    public void loadCardDeck(Stage stage) {
         // Deserialization
         CardDeck deckLoaded;
+        FileChooser fileChooser = new FileChooser();
+        File fileSelected = fileChooser.showOpenDialog(stage);
         try {
             // Reading the object from a file
-            String filename = System.getProperty("user.home")+"/Desktop/cardDeck.zhang";
-            FileInputStream file = new FileInputStream(filename);
+            String filename = System.getProperty("user.home")+"/Desktop/amazing.txt";
+            FileInputStream file = new FileInputStream(fileSelected);
             ObjectInputStream in = new ObjectInputStream(file);
 
             // Method for deserialization of object
