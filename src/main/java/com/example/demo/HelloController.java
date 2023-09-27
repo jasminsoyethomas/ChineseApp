@@ -22,7 +22,7 @@ public class HelloController implements Initializable {
     private Button buttonCreateOwnDeck;
 
     @FXML
-   ImageView titleImage;
+    ImageView titleImage;
 
     @FXML
     private Button buttonUseExistingDeck;
@@ -60,7 +60,23 @@ public class HelloController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
 
+    public void loadScreen4(){
+        CardDeck cardDeck = new CardDeck();
+        Data.loadColorDeck();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reviewgame.fxml"));
+        Scene scene;
+        try{
+            scene = new Scene(fxmlLoader.load(), 620, 540);
+        }
+        catch (IOException e){
+            throw new RuntimeException(e);
+        }
+        Stage stage = (Stage) buttonUseExistingDeck.getScene().getWindow();
+        stage.close();
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -70,6 +86,9 @@ public class HelloController implements Initializable {
         titleImage.setImage(new Image("/images/amazing.jpg"));
     }
 }
+
+
+
 
 
 

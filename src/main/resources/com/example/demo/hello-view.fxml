@@ -38,6 +38,11 @@
          <children>
             <VBox alignment="BOTTOM_CENTER" prefHeight="293.0" prefWidth="302.0">
                <children>
+                  <Button mnemonicParsing="false" onAction="#loadScreen4" prefHeight="37.0" prefWidth="173.0" text="Use Premade Deck">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="buttonCreateOwnDeck" mnemonicParsing="false" onAction="#loadScreen2" prefHeight="32.0" prefWidth="162.0" text="Create Own Deck">
                      <VBox.margin>
                         <Insets bottom="75.0" />
@@ -47,7 +52,7 @@
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="293.0" prefWidth="299.0">
                <children>
-                  <Button fx:id="buttonUseExistingDeck" alignment="CENTER" mnemonicParsing="false" onAction="#loadScreen3" prefHeight="32.0" prefWidth="155.0" text="Use Existing Deck">
+                  <Button fx:id="buttonUseExistingDeck" alignment="CENTER" mnemonicParsing="false" onAction="#loadScreen3" prefHeight="26.0" prefWidth="145.0" text="Use Existing Deck">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

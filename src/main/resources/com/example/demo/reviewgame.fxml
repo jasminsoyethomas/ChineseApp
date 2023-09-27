@@ -45,7 +45,7 @@
                      <children>
                         <Label fx:id="labelWord" text="Label">
                            <font>
-                              <Font size="74.0" />
+                              <Font size="34.0" />
                            </font>
                         </Label>
                      </children></VBox>

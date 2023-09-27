@@ -71,69 +71,96 @@ public class Reviewgame implements Initializable {
         loadQuestion();
     }
 
-        public void showFinalScore(){
-                final Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(labelWord.getScene().getWindow());
-                VBox diaologVbox = new VBox(20);
-                diaologVbox.getChildren().add(new Text("Congratulations! You finished the game!"));
-                diaologVbox.getChildren().add(new Text("Percentage Correct: " + (correct/((double)correct + incorrect))* 100));
-                diaologVbox.getChildren().add(new Text("Percentage Incorrect: " + (incorrect/((double)correct + incorrect))*100));
-                diaologVbox.getChildren().add(new Button("Exit Game"));
-                Scene dialogScene = new Scene (diaologVbox, 350, 200);
-                dialog.setScene(dialogScene);
-                dialog.show();
-                Button buttonExit = (Button) diaologVbox.getChildren().get(3);
-                buttonExit.setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
-                    Platform.exit();
-                }
-            });
+    public void showFinalScore(){
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(labelWord.getScene().getWindow());
+        VBox diaologVbox = new VBox(20);
+        diaologVbox.getChildren().add(new Text("Congratulations! You finished the game!"));
+        diaologVbox.getChildren().add(new Text("Percentage Correct: " + (correct/((double)correct + incorrect))* 100));
+        diaologVbox.getChildren().add(new Text("Percentage Incorrect: " + (incorrect/((double)correct + incorrect))*100));
+        diaologVbox.getChildren().add(new Button("Exit Game"));
+        Scene dialogScene = new Scene (diaologVbox, 350, 200);
+        dialog.setScene(dialogScene);
+        dialog.show();
+        Button buttonExit = (Button) diaologVbox.getChildren().get(3);
+        buttonExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                Platform.exit();
             }
+        });
+    }
 
-public void wrongAnswer(ActionEvent event){
-    final Stage dialog = new Stage();
-    dialog.initModality(Modality.APPLICATION_MODAL);
-    Node node = (Node) event.getSource();
-    dialog.initOwner(node.getScene().getWindow());
-    VBox diaologVbox = new VBox(20);
-    diaologVbox.getChildren().add(new Text("This is the right answer"));
-    diaologVbox.getChildren().add(new Text(currentCard.getDefinition()));
-    Scene dialogScene = new Scene (diaologVbox, 250, 100);
-    dialog.setScene(dialogScene);
-    dialog.show();
-}
+    public void wrongAnswer(ActionEvent event){
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        Node node = (Node) event.getSource();
+        dialog.initOwner(node.getScene().getWindow());
+        VBox diaologVbox = new VBox(20);
+        diaologVbox.getChildren().add(new Text("This is the right answer"));
+        diaologVbox.getChildren().add(new Text(currentCard.getDefinition()));
+        Scene dialogScene = new Scene (diaologVbox, 250, 100);
+        dialog.setScene(dialogScene);
+        dialog.show();
+    }
 
-public void loadQuestion(){
-    ArrayList<String> choices = new ArrayList<>();
+    public void loadQuestion(){
+        ArrayList<String> choices = new ArrayList<>();
 
         currentCard = Data.currentlyLoadedDeck.remove(0);
         choices.add(currentCard.getDefinition());
         for (int i = 0; i < 3; i++){
             int random = (int) (Math.random()*cardDefinitions.size());
             while(choices.contains(cardDefinitions.get(random))){
-               random = (int) (Math.random()*cardDefinitions.size());
+                random = (int) (Math.random()*cardDefinitions.size());
                 System.out.println(random);
                 System.out.println(cardDefinitions.get(random));
 
             }
             choices.add(cardDefinitions.get(random));
         }
-    Collections.shuffle(choices);
+        Collections.shuffle(choices);
 
         button0.setText(choices.get(0));
-    button1.setText(choices.get(1));
-    button2.setText(choices.get(2));
-    button3.setText(choices.get(3));
+        button1.setText(choices.get(1));
+        button2.setText(choices.get(2));
+        button3.setText(choices.get(3));
 
-    labelWord.setText(currentCard.getWord());
-    int randomNum = (int) (Math.random()*15);
-    imageViewPanda.setImage(new Image(("/images/image"+ randomNum+ ".gif")));
+        labelWord.setText(currentCard.getWord());
+        int randomNum = (int) (Math.random()*15);
+        if(currentCard.getDefinition().equals("Red")) {
+            imageViewPanda.setImage(new Image(("/images/" + "red" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Black")) {
+            imageViewPanda.setImage(new Image(("/images/" + "black" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Blue")) {
+            imageViewPanda.setImage(new Image(("/images/" + "blue" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Green")) {
+            imageViewPanda.setImage(new Image(("/images/" + "green" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Orange")) {
+            imageViewPanda.setImage(new Image(("/images/" + "orange" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Purple")) {
+            imageViewPanda.setImage(new Image(("/images/" + "purple" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("White")) {
+            imageViewPanda.setImage(new Image(("/images/" + "white" + ".jpeg")));
+        }
+        else if(currentCard.getDefinition().equals("Yellow")) {
+            imageViewPanda.setImage(new Image(("/images/" + "yellow" + ".jpeg")));
+        }
+        else{
+            imageViewPanda.setImage(new Image(("/images/image" + randomNum + ".gif")));
+        }
+    }
 
 
-}
 
-public boolean rightOrWrong(Button button){
+
+    public boolean rightOrWrong(Button button){
         if(button.getText().equals(currentCard.getDefinition())){
             return true;
         }
@@ -141,49 +168,49 @@ public boolean rightOrWrong(Button button){
             return false;
         }
 
-}
-
-public void buttonSelect(ActionEvent event) {
-    Button buttonSelected = (Button) event.getSource();
-    rightOrWrong(buttonSelected);
-    if(rightOrWrong(buttonSelected)){
-        System.out.println("correct");
-        guessCorrect();
-        if(Data.currentlyLoadedDeck.size()==0) {
-            showFinalScore();
-        }
-        else {
-            loadQuestion();
-        }
-    }
-    else{
-        guessIncorrect();
-        wrongAnswer(event);
-        if(Data.currentlyLoadedDeck.size()==0) {
-            showFinalScore();}
-        else {
-            loadQuestion();
-        }
     }
 
-    //update stats
+    public void buttonSelect(ActionEvent event) {
+        Button buttonSelected = (Button) event.getSource();
+        rightOrWrong(buttonSelected);
+        if(rightOrWrong(buttonSelected)){
+            System.out.println("correct");
+            guessCorrect();
+            if(Data.currentlyLoadedDeck.size()==0) {
+                showFinalScore();
+            }
+            else {
+                loadQuestion();
+            }
+        }
+        else{
+            guessIncorrect();
+            wrongAnswer(event);
+            if(Data.currentlyLoadedDeck.size()==0) {
+                showFinalScore();}
+            else {
+                loadQuestion();
+            }
+        }
 
-}
+        //update stats
 
-public void guessCorrect(){
+    }
+
+    public void guessCorrect(){
         Label numLeft = (Label) vBoxStats.getChildren().get(0);
         numLeft.setText("Number of cards left: " + Data.currentlyLoadedDeck.size());
         Label numCorrect = (Label) vBoxStats.getChildren().get(1);
         correct++;
         numCorrect.setText("Number Correct: " + (correct));
-}
+    }
 
-public void guessIncorrect(){
-    Label numLeft = (Label) vBoxStats.getChildren().get(0);
-    numLeft.setText("Number of cards left: " + Data.currentlyLoadedDeck.size());
-    Label numCorrect = (Label) vBoxStats.getChildren().get(2);
-    incorrect++;
-    numCorrect.setText("Number Incorrect: " + (incorrect));
+    public void guessIncorrect(){
+        Label numLeft = (Label) vBoxStats.getChildren().get(0);
+        numLeft.setText("Number of cards left: " + Data.currentlyLoadedDeck.size());
+        Label numCorrect = (Label) vBoxStats.getChildren().get(2);
+        incorrect++;
+        numCorrect.setText("Number Incorrect: " + (incorrect));
 
     }
 
